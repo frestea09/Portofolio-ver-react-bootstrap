@@ -1,0 +1,31 @@
+.kerangka-pembuka{
+    height: 800px;
+}
+.kerangka-footer{
+    height: 200px;
+}
+.img-ilman{
+    width: 150px;
+    height: 50px;
+}
+ul li{
+    list-style: none;
+}
+.imageKemampuan{
+    width: 150px;
+}
+.imageWork{
+    position: relative;
+    width : 100%;
+    height: 100px;
+}
+.logoSocial{
+    width: 50px;
+}
+.navbar-styles{
+    width : 100%;
+    height: 100px;
+}
+.kotak{
+    height: 800px;
+}
