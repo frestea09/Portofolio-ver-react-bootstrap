@@ -8,8 +8,13 @@ import { Container,Row,Col } from 'react-bootstrap';
 import Introduction from '../pages/Introduction';
 import { KerangkaWork } from './KerangkaWork';
 import GambarIlman from '../assets/img/perfect_foto.png';
+import Gunting from '../assets/img/beruang.jpg';
 import { Article } from '../component/Article';
-const Kerangka = ()=>{
+import Batu from '../assets/img/beruang.jpg';
+
+export const DataKemampuan = React.createContext();
+export const DataWork = React.createContext();
+export const Kerangka = ()=>{
     const [dataIntroduction,setDataIntroduction] = useState(
         {
             heading : 'Designer, Front-end Developer & Mentor',
@@ -23,39 +28,26 @@ const Kerangka = ()=>{
             content : 'Since beginning my journey as a freelance designer nearly 10 years ago, I\'ve done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use. I\'m quietly confident, naturally curious, and perpetually working on improving my chops one design problem at a time.'
         }
     )
-    const [dataWork,setDataWork] = useState(
+    const [previousCompany,setPreviousCompany] = useState(
         {
-            data : [
+            data : 
                 {
-                    heading : 'Designer',
-                    contentHeading : 'I value simple content structure, clean design patterns, and thoughtful interactions',
-                    sectionSatu : 'Things I enjoy designing:',
-                    itemSatu : ['UX', 'UI', 'Web', 'Mobile', 'Apps', 'Logos'],
-                    sectionDua : 'Design Tools:',
-                    itemDua : [
-                        'Balsamiq Mockups',
-                        'Figma',
-                        'Invision',
-                        'Marvel',
-                        'Pen & Paper',
-                        'Sketch',
-                        'Webflow',
-                        'Zeplin',
-                    ]
+                    heading : 'My Recent Work',
+                    content : 'Here are a few design projects I\'ve worked on recently. Want to see more? Email me.'
                 }
-            ]
+            
         }
-    )
-    const listBilangan =  {
+    );
+    const dataKemampuan =  {
         data :{
             section : [
                 {
                     id : 1,
-                    gambar : {GambarIlman},
+                    gambar : {Batu},
                     heading : 'Designer',
                     contentHeading : 'I value simple content structure, clean design patterns, and thoughtful interactions',
                     sectionSatu : 'Things I enjoy designing:',
-                    itemSatu : ['UX', 'UI', 'Web', 'Mobile', 'Apps', 'Logos'],
+                    itemSatu : 'UX, UI, Web, Mobile, Apps, Logos',
                     sectionDua : 'Design Tools:',
                     itemDua : [
                         'Balsamiq Mockups',
@@ -70,11 +62,11 @@ const Kerangka = ()=>{
                 },
                 {
                     id : 2,
-                    gambar : {GambarIlman},
+                    gambar : {Gunting},
                     heading : 'Front-end Developer',
                     contentHeading : 'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
                     sectionSatu : 'Languages I speak:',
-                    itemSatu : ['HTML', 'Pug', 'Slim', 'CSS', 'Sass', 'Less'],
+                    itemSatu : 'HTML, Pug, Slim, CSS, Sass, Less',
                     sectionDua : 'Dev Tools:',
                     itemDua : [
                         'Atom',
@@ -90,27 +82,19 @@ const Kerangka = ()=>{
                 },
                 {
                     id : 3,
-                    gambar : {GambarIlman},
-                    heading : 'Designer',
-                    contentHeading : 'I value simple content structure, clean design patterns, and thoughtful interactions',
-                    sectionSatu : 'Things I enjoy designing:',
-                    itemSatu : ['UX', 'UI', 'Web', 'Mobile', 'Apps', 'Logos'],
-                    sectionDua : 'Design Tools:',
+                    gambar : {Gunting},
+                    heading : 'Mentor',
+                    contentHeading : 'I genuinely care about people, and love helping fellow designers work on their craft.',
+                    sectionSatu : 'Experiences I draw from:',
+                    itemSatu : 'UX/UI, Product,design Freelancing',
+                    sectionDua : 'Mentor Stats:',
                     itemDua : [
-                        'Balsamiq Mockups',
-                        'Figma',
-                        'Invision',
-                        'Marvel',
-                        'Pen & Paper',
-                        'Sketch',
-                        'Webflow',
-                        'Zeplin',
+                        '5 years experience'
                     ]
                 }
             ]
         }
     };
-    let item = listBilangan.data.section.map(items=><Article key={items.id} data={items}/>);
 
     return(
         <Fragment>
@@ -126,7 +110,11 @@ const Kerangka = ()=>{
                             <AboutMe data ={dataAbout}/>
                         </Col>
                     </Row>
-                    <KerangkaWork/>
+                    <DataKemampuan.Provider value={dataKemampuan}>
+                        <DataWork.Provider value = {previousCompany}>
+                            <KerangkaWork/>
+                        </DataWork.Provider>
+                    </DataKemampuan.Provider >
                     <Row>
                         <Col>
                             <PreviousCompany/>
@@ -142,4 +130,3 @@ const Kerangka = ()=>{
     )
 }
 
-export default memo(Kerangka)

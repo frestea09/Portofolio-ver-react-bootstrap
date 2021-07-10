@@ -3,7 +3,7 @@ import { Container,Row,Col,Image } from 'react-bootstrap';
 import beruang from '../assets/img/beruang.jpg';
 import '../assets/style/styles.css';
 
-const PreviousCompany = ()=>{
+const PreviousCompany = (props)=>{
     return(
         <Fragment>
              <Container fluid>

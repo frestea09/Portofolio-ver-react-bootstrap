@@ -1,5 +1,5 @@
 import React from 'react'
-import Kerangka from './pages/Kerangka';
+import {Kerangka} from './pages/Kerangka';
 
 const App = () =>{
     return(

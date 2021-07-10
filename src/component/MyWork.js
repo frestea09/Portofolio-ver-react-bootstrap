@@ -1,16 +1,18 @@
-import React,{memo,Fragment} from 'react';
+import React,{memo,Fragment,useContext} from 'react';
 import { Container,Row,Col,Image } from 'react-bootstrap';
 import beruang from '../assets/img/beruang.jpg';
 import '../assets/style/styles.css';
+import { DataWork } from '../pages/Kerangka';
 
 const MyWork = ()=>{
+    const dataWork = useContext(DataWork);
     return(
         <Fragment>
              <Container className="mx-2" fluid>
                 <Row>
                     <Col xs={12} className="text-center">
-                        <h3>My Recent Work</h3>
-                        <p>Here are a few design projects I've worked on recently. Want to see more? Email me.</p>
+                        <h3>{dataWork.data.heading}</h3>
+                        <p>{dataWork.data.content}</p>
                     </Col>  
                 </Row>
                 <Row>
